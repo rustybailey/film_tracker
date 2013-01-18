@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/reset.css">
+		<title>Movies Watched in 2013</title>		
+	</head>
+	<body>
+		<input id="movie" type="text" /><button>Search</button>
+		<div id="1"></div>
+		<div id="2"></div>
+		<img src="">
+		<script type="text/javascript">
+			$(document).ready(function() {
+			    var url = 'http://api.themoviedb.org/3/',
+			        mode = 'search/movie?query=',
+			        input,
+			        movieName,
+			        key = '&api_key=f22e6ce68f5e5002e71c20bcba477e7d',
+			        base_url = "http://cf2.imgobject.com/t/p/",
+			        poster_sizes = [
+			            "w92",
+			            "w154",
+			            "w185",
+			            "w342",
+			            "w500",
+			            "original"
+			        ];
+
+			    $('button').click(function() {
+			        var input = $('#movie').val(),
+			            movieName = encodeURI(input);
+			        $.ajax({
+			            type: 'GET',
+			            url: url + mode + movieName + key,
+			            async: false,
+			            jsonpCallback: 'testing',
+			            contentType: 'application/json',
+			            dataType: 'jsonp',
+			            success: function(json) {
+			            	console.log(json)
+			            	var release = json.results[0].release_date;
+			            	var year = release.substring(0, 4);
+			                $('#1').html(json.total_results + " results");
+			                $('#2').html(json.results[0].title + " was released in " + year + " and was your first result.");
+			                $('img').attr('src', base_url + poster_sizes[4] + json.results[0].poster_path);
+			            }
+			        });
+			    });
+			});
+		</script>
+	</body>
+</html>
