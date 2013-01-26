@@ -2,16 +2,15 @@
 <html>
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="http://underscorejs.org/underscore-min.js"></script>
 		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/styles.css">
 		<title>Movies Watched in 2013</title>		
 	</head>
 	<body>
-		<input id="movie" type="text" /><button>Search</button>
-		<div id="1"></div>
-		<div id="2"></div>
-		<img src="">
 		<script type="text/javascript">
 			$(document).ready(function() {
+
 			    var url = 'http://api.themoviedb.org/3/',
 			        mode = 'search/movie?query=',
 			        input,
@@ -25,25 +24,45 @@
 			            "w342",
 			            "w500",
 			            "original"
+			        ],
+			        movies_watched = [
+			        	"Video Game High School",
+						"Beverly Hills Cop",
+						"Justice League: Doom",
+						"Punch-Drunk Love",
+						"7 Up",
+						"7 Plus Seven",
+						"Snow on Tha Bluff",
+						"21 Up",
+						"Primer",
+						"Machine Gun Preacher",
+						"Jeff, Who Lives at Home"
 			        ];
+			    var movieTemplate = _.template('<div id="<%= movieName %>" class="movie">' +
+			    	'<p> <%= movieName %> - <%= year %> </p>' +
+			    	'<img src="<%= imgLink %>">' +
+			    	'</div>'
+			    	);
 
-			    $('button').click(function() {
-			        var input = $('#movie').val(),
-			            movieName = encodeURI(input);
+			    $.each(movies_watched, function(index, movie) {
+			        movieName = encodeURI(movie);
 			        $.ajax({
 			            type: 'GET',
 			            url: url + mode + movieName + key,
 			            async: false,
-			            jsonpCallback: 'testing',
 			            contentType: 'application/json',
 			            dataType: 'jsonp',
 			            success: function(json) {
 			            	console.log(json)
 			            	var release = json.results[0].release_date;
 			            	var year = release.substring(0, 4);
-			                $('#1').html(json.total_results + " results");
-			                $('#2').html(json.results[0].title + " was released in " + year + " and was your first result.");
-			                $('img').attr('src', base_url + poster_sizes[4] + json.results[0].poster_path);
+			            	var title = json.results[0].title;
+			            	var imgLink = base_url + poster_sizes[1] + json.results[0].poster_path;
+			                $(movieTemplate({
+			                	movieName: title,
+			                	year: year,
+			                	imgLink: imgLink
+			                })).appendTo('body');
 			            }
 			        });
 			    });

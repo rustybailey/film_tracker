@@ -1,0 +1,14 @@
+.movie {
+	float: left;
+	margin: 5px 5px 0 5px;
+
+}
+
+.movie p {
+	font-size: 10px;
+}
+
+.movie img {
+	width: 154px;
+	height: 231px;
+}
