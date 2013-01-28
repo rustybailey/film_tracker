@@ -43,7 +43,7 @@ $.ajax({
     success: function(json) {
         $.each(json.items, function(index, movie){
             var release = movie.release_date;
-            var year = release.substring(0, 4);
+            var year = new Date(release).getFullYear();
             var title = movie.title;
             var imgLink = base_url + poster_sizes[1] + movie.poster_path;
             $(movieTemplate({
@@ -68,7 +68,7 @@ $('#movie-search').keyup(function(e) {
             titles = [];
             $.each(json.results, function(index, movie){
                 var release = movie.release_date;
-                //var year = release.substring(0, 4);
+                var year = new Date(release).getFullYear();
                 var title = movie.title;
                 var imgLink = base_url + poster_sizes[1] + movie.poster_path;
                 titles.push(title);
