@@ -90,6 +90,47 @@ $('#movie-search').textext({ plugins : 'autocomplete suggestions' }).click(funct
         }
     );
 
+$.ajax({
+    type: 'GET',
+    url: "https://spreadsheets.google.com/feeds/list/0AkaI-cWl3cPEdGtpWUpHRzNIWXdtbV9lMkwzWHlWc2c/od6/public/basic?alt=json",
+    async: false,
+    dataType: 'json',
+    success: function(data) {
+        console.log(data.feed.entry);
+
+
+    },
+    error: function(xhr) {
+        console.log(xhr)
+    }
+});
+
+
+    
+    // console.log(google);
+
+
+
+    //     google.load('visualization', '1.0', {'packages':['corechart','table','geochart']});
+    //     var query = new google.visualization.Query(
+    //     'https://spreadsheets.google.com/feeds/list/0AkaI-cWl3cPEdGtpWUpHRzNIWXdtbV9lMkwzWHlWc2c/od6/public/basic?alt=json');
+    //     console.log(query)
+    //         var poop = query.send(handleQueryResponse);
+    //         console.log(poop)
+
+        
+    //     function handleQueryResponse(response) {
+    //       if (response.isError()) {
+    //         alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+    //         return;
+    //       }
+
+    //       var data = response.getDataTable();
+    //       //console.log(data)
+    //       return data;
+    //     }
+
+
 
 });
 
