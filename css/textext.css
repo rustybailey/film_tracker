@@ -4,6 +4,7 @@
 .text-core .text-wrap {
   background: #fff;
   position: absolute;
+  border-radius: 5px; /* added by me */
 }
 .text-core .text-wrap textarea,
 .text-core .text-wrap input {
@@ -26,6 +27,7 @@
 /*  font: 11px "lucida grande", tahoma, verdana, arial, sans-serif;*/
 /*  line-height: 13px;*/ /*inherit*/
   height: auto;
+  background-color: white; /* added by me */
 }
 .text-core .text-wrap .text-dropdown {
 /*  -webkit-box-sizing: border-box;
