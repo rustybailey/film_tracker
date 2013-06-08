@@ -11,13 +11,7 @@ h1, p { color: whitesmoke;}
 
 .movie {
 	float: left;
-	margin: 5px 5px 0 0;
 	position: relative;
-}
-
-.movie p {
-	font-size: 10px;
-	text-align: center;
 }
 
 .movie img {
@@ -31,13 +25,15 @@ h1, p { color: whitesmoke;}
 	width: 100%;
 	height: 100%;
 	background-color: rgba(12,12,12,0.8);
-	padding: 2px 5px;
+	padding: 5px;
 	text-align: center;
 	color: whitesmoke;
 	font-size: 12px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	display: none;
+	line-height: 1.4em;
+	font-weight: bold;
 }
 
 .movie:hover .title-card {
@@ -47,5 +43,6 @@ h1, p { color: whitesmoke;}
 .form-field {
   	display: block;
   	float: left;
-  	margin: 0 30px 0 0;
+  	margin: 0 10px 0 0;
+  	width: 284px;
 }
