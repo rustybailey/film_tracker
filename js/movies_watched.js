@@ -1,3 +1,9 @@
+// TODO: 
+// 1. Change dropdown search either by:
+//      a. Modifying the key press event.
+//      b. Taking out textext and just making it a straight search.
+// 2. Cleanup unused/experimental code.
+
 $(document).ready(function($) {
 
 var url = 'http://api.themoviedb.org/3/',
@@ -28,9 +34,9 @@ var url = 'http://api.themoviedb.org/3/',
         // "Machine Gun Preacher",
         // "Jeff, Who Lives at Home"
 //      ];
-var movieTemplate = _.template('<div id="<%= movieName %>" class="movie">' +
-    '<p> <%= movieName %> - <%= year %> </p>' +
+var movieTemplate = _.template('<div id="<%= movieName %>" data-year="<%= year %>" class="movie">' +
     '<img src="<%= imgLink %>">' +
+    '<div class="title-card"><%= movieName %> (<%= year %>)</div>' +
     '</div>'
     );
 
@@ -45,7 +51,7 @@ $.ajax({
             var release = movie.release_date;
             var year = new Date(release).getFullYear();
             var title = movie.title;
-            var imgLink = base_url + poster_sizes[1] + movie.poster_path;
+            var imgLink = base_url + poster_sizes[0] + movie.poster_path;
             $(movieTemplate({
                 movieName: title,
                 year: year,

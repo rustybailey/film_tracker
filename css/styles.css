@@ -5,9 +5,14 @@ body {
 
 h1, p { color: whitesmoke;}
 
+#movies-container {
+	margin: 10px 0;
+}
+
 .movie {
 	float: left;
-	margin: 5px 10px 0 0;
+	margin: 5px 5px 0 0;
+	position: relative;
 }
 
 .movie p {
@@ -16,13 +21,31 @@ h1, p { color: whitesmoke;}
 }
 
 .movie img {
-	width: 154px;
-	height: 231px;
-	border: 1px solid whitesmoke;
+	width: 92px;
+	height: 138px;
+}
+
+.title-card {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(12,12,12,0.8);
+	padding: 2px 5px;
+	text-align: center;
+	color: whitesmoke;
+	font-size: 12px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	display: none;
+}
+
+.movie:hover .title-card {
+	display: block;
 }
 
 .form-field {
-  display: block;
-  float: left;
-  margin: 0 30px 0 0;
+  	display: block;
+  	float: left;
+  	margin: 0 30px 0 0;
 }
