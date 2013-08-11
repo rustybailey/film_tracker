@@ -48,6 +48,7 @@ $.ajax({
     dataType: 'jsonp',
     success: function(json) {
         $.each(json.items, function(index, movie){
+            if(!movie) return // Fix for movies that return null
             var release = movie.release_date;
             var year = new Date(release).getFullYear();
             var title = movie.title;
