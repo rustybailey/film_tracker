@@ -40,3 +40,10 @@ h1, p { color: whitesmoke;}
 .movie:hover .title-card {
 	display: block;
 }
+
+.pie-tooltip {
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+	border-radius: 2px;
+	padding: 2px;
+}
