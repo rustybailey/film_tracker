@@ -53,6 +53,9 @@ $(document).ready(function() {
                         if(movieIds.length - 1 === i) {
                             console.log("Finished in " + count + " seconds.");
                             clearTimeout(timer);
+                            console.log(totalMinutesWatched());
+                            var minutesYearToDate = (d3.time.dayOfYear(new Date()) + 1) * 24 * 60
+                            console.log((totalMinutesWatched() / minutesYearToDate) * 100)
                         }
                     }
                 });
@@ -60,6 +63,13 @@ $(document).ready(function() {
         }
     });
 
+    var totalMinutesWatched = function() {
+        totalRuntime = 0;
+        $('.movie').each(function() {
+            totalRuntime += $(this).data("runtime");
+        });
+        return totalRuntime;
+    }
 
 });
 
