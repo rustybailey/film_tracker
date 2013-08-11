@@ -71,6 +71,15 @@ $(document).ready(function() {
         return totalRuntime;
     }
 
+    $('body').on('click', '.toggle-posters', function() {
+        if($(this).text() === "Hide Posters") {
+            $(this).text("Show Posters");
+        } else {
+            $(this).text("Hide Posters");
+        }
+        $('#movies-container').slideToggle();
+    })
+
 });
 
 
